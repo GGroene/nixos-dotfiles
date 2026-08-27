@@ -40,6 +40,10 @@ in
       init.defaultBranch = "main";
     };
   };
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = true;
+  };
 
   xdg.configFile = builtins.mapAttrs
     (name: subpath: {
