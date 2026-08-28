@@ -644,6 +644,12 @@ floating_layout = layout.Floating(
 @hook.subscribe.startup_once
 def autostart():
     home = os.path.expanduser('~/nixos-dotfiles/config/qtile/scripts/autostart.sh')
+    # startup_once only ever fires once per login and never retries on its own,
+    # so guard against /home not being mounted yet this early in the session.
+    for _ in range(10):
+        if os.path.exists(home):
+            break
+        time.sleep(0.5)
     subprocess.run(home)
 
 
