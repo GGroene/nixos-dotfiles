@@ -643,7 +643,7 @@ floating_layout = layout.Floating(
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~/nixos-dotfiles/qtile/scripts/autostart.sh')
+    home = os.path.expanduser('~/nixos-dotfiles/config/qtile/scripts/autostart.sh')
     subprocess.run(home)
 
 
