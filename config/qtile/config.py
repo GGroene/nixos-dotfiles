@@ -631,6 +631,7 @@ floating_layout = layout.Floating(
         Match(wm_class="steam"),  # steam
         Match(wm_class="blueman-manager"),  # blueman-manager
         Match(wm_class="sxiv"),  # sxiv
+        Match(wm_class=".blueman-manager-wrapped"),  # blueman-manager
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
     ]

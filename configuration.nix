@@ -43,6 +43,19 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (final: prev: {
+      python3 = prev.python3.override {
+        packageOverrides = pyFinal: pyPrev: {
+          qtile = pyPrev.qtile.overrideAttrs (old: {
+            doCheck = false;
+            doInstallCheck = false;
+          });
+        };
+      };
+      python3Packages = final.python3.pkgs;
+    })
+  ];
 
   programs.firefox.enable = true;
 
@@ -55,6 +68,8 @@
     gh
     alacritty
     networkmanagerapplet
+    btop
+    arandr
   ];
 
   fonts.packages = with pkgs; [

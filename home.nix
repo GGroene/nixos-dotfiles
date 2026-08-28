@@ -15,6 +15,10 @@ let
 in
 
 {
+  imports = [
+    ./modules/neovim.nix
+    ./modules/work.nix
+  ];
   home.username = "gg";
   home.homeDirectory = "/home/gg";
   programs.git.enable = true;
@@ -32,7 +36,7 @@ in
   programs.fish.enable = true;
 
   programs.git = {
-    extraConfig = {
+    settings = {
       user = {
         name = "Gijs Groeneveld";
         email = "gijsgroeneveld@msn.com";
@@ -53,11 +57,6 @@ in
     configs;
 
   home.packages = with pkgs; [
-    neovim
-    ripgrep
-    nil
-    nixpkgs-fmt
-    nodejs
     gcc
     rofi
     rofi-power-menu
@@ -68,11 +67,6 @@ in
     tmux
     pcmanfm
     kdePackages.filelight
-
-    vscode.fhs
-    azure-cli
-    claude-code
-    poetry
   ];
 
 }
