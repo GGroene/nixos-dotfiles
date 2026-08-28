@@ -29,15 +29,12 @@ import os
 from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, hook, Screen
 from libqtile.lazy import lazy
-# from qtile_extras import widget
 import colors
 import time
 
 mod = "mod4"  # aka Windows key
 mod1 = "mod1"  # alt key
-# terminal = "alacritty -e tmux"
 terminal = "alacritty"
-# filemanager = "thunar"
 filemanager = "pcmanfm"
 color = colors.Dracula
 
@@ -210,9 +207,7 @@ keys.extend(
     ]
 )
 #   Be careful modifying this, otherwise qtile config will break
-# groups = [Group(f"{i+1}", label="") for i in range(9)]
 groups = [Group(f"{i+1}", label=i+1) for i in range(9)]
-# groups = [Group(i) for i in "123456789"]
 
 for i in groups:
     keys.extend(
@@ -293,7 +288,6 @@ layouts = [
 ]
 
 widget_defaults = {
-    # "font": "IBM Plex Mono Medium",
     "font": "JetBrainsMono Nerd Font Bold",
     "fontsize": 14,
     "padding": 2,
@@ -304,22 +298,6 @@ widget_defaults = {
 }
 
 deco = {
-    "decorations": [
-        # RectDecoration(
-        #   colour=color[1], radius=6, filled=True, group=True, clip=True),
-        # RectDecoration(
-        #   colour=color[0], radius=0, filled=False, group=True, clip=True,
-        #   line_colour=color[6], line_width=1)
-        # BorderDecoration(
-        #   colour=color[6], group=True, margin_y=2, padding_y=0,
-        #   border_width=[0,0,2,0])
-        # BorderDecoration(
-        #   colour=color[6], border_width=[0,0,1,0])
-    ],
-    # "decorations": [
-    #     RectDecoration(
-    #       colour=color[2], radius=8, filled=True, group=True, clip=True)
-    # ],
 }
 
 spacer_length = {"length": 8, }
@@ -336,7 +314,6 @@ extension_defaults = [widget_defaults.copy()]
 
 def open_launcher():
     qtile.cmd_spawn("rofi -show drun")
-#   qtile.cmd_spawn("menu")
 
 
 def open_power():
@@ -374,15 +351,6 @@ def init_widgets_list():
         widget.Sep(
             **sep_defaults,
         ),
-        #
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
-
-        # widget.CurrentLayoutIcon(
-        #     **deco,
-        #     scale=0.5,
-        # ),
 
         widget.CurrentLayout(
             **deco,
@@ -391,10 +359,6 @@ def init_widgets_list():
         widget.Sep(
             **sep_defaults,
         ),
-        #
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
 
         widget.WindowName(
             **deco,
@@ -402,13 +366,15 @@ def init_widgets_list():
             empty_group_string='Desktop',
         ),
 
+        widget.Systray(
+            **deco,
+            icon_size=18,
+            padding=1,
+        ),
+
         widget.Sep(
             **sep_defaults,
         ),
-        #
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
 
         widget.CPU(
             **deco,
@@ -420,10 +386,6 @@ def init_widgets_list():
         widget.Sep(
             **sep_defaults,
         ),
-        #
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
 
         widget.Memory(
             **deco,
@@ -436,72 +398,6 @@ def init_widgets_list():
             **sep_defaults,
         ),
 
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
-
-        widget.Systray(
-            **deco,
-            icon_size=18,
-            padding=1,
-        ),
-
-        # widget.Sep(
-        #     **sep_defaults,
-        #     ),
-        #
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
-
-        # widget.Image(
-        #     **deco,
-        #     filename = '~/.config/qtile/Assets/Bar-Icons/brightness.svg',
-        #     margin_y = 3,
-        #     scale = True,
-        #     ),
-        #
-        # widget.Backlight(
-        #     **deco,
-        #     backlight_name='intel_backlight'
-        #     ),
-
-        widget.Sep(
-            **sep_defaults,
-        ),
-        #
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
-
-        # widget.Image(
-        #     **deco,
-        #     filename='~/.config/qtile/Assets/Bar-Icons/volume.svg',
-        #     margin_y=3,
-        #     scale=True,
-        #     mouse_callbacks={'Button1': open_pavu},
-        # ),
-
-        # widget.Volume(
-        #     **deco,
-        # ),
-        #
-        # widget.Sep(
-        #     **sep_defaults,
-        # ),
-        #
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
-
-        # widget.Image(
-        #     **deco,
-        #     filename='~/.config/qtile/Assets/Bar-Icons/calendar.svg',
-        #     margin_y=4,
-        #     margin_x=3,
-        #     scale=True,
-        # ),
-
         widget.Clock(
             **deco,
             format='%a %d/%m/%y',  # Here you can change timezone
@@ -511,37 +407,12 @@ def init_widgets_list():
         widget.Sep(
             **sep_defaults,
         ),
-        #
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
-
-        # widget.Image(
-        #     **deco,
-        #     filename='~/.config/qtile/Assets/Bar-Icons/clock.svg',
-        #     margin_y=4,
-        #     margin_x=3,
-        #     scale=True,
-        # ),
 
         widget.Clock(
             **deco,
             format='%H:%M ',
             padding=0,
         ),
-
-        # widget.Spacer(
-        #     **spacer_length,
-        #     ),
-        #
-        # widget.Image(
-        #     **deco,
-        #     filename = '~/.config/qtile/Assets/Bar-Icons/power.svg',
-        #     margin_y = 3,
-        #     margin_x = 0,
-        #     scale = True,
-        #     mouse_callbacks = {'Button1': open_power},
-        #     ),
     ]
     return widgets_list
 
