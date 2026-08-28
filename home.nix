@@ -18,6 +18,7 @@ in
   imports = [
     ./modules/neovim.nix
     ./modules/work.nix
+    ./modules/theme.nix
   ];
   home.username = "gg";
   home.homeDirectory = "/home/gg";

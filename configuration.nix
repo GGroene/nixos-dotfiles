@@ -50,6 +50,8 @@
     shell = pkgs.fish;
   };
 
+  programs.dconf.enable = true;
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (final: prev: {
