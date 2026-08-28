@@ -10,6 +10,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Suppress console-printed kernel messages (e.g. the HP ENVY x360's benign
+  # hp-wmi/ACPI "CreateField of length zero" BIOS bug) from showing on the ly
+  # login screen during boot.
+  boot.kernelParams = [ "quiet" "loglevel=3" ];
 
   networking.hostName = "nixos-btw";
   networking.networkmanager.enable = true;
