@@ -1,3 +1,12 @@
+-- `keys` below can only set descriptions for real mappings; a lazy.nvim keys
+-- entry with a nil rhs is treated as "delete this mapping", not a which-key
+-- group label, so the <leader>c group name has to be registered here instead.
+-- Deferred because which-key.nvim isn't on the runtimepath yet while lazy.nvim
+-- is still collecting plugin specs from this file.
+vim.schedule(function()
+  require("which-key").add({ "<leader>c", group = "AI/Claude Code" })
+end)
+
 return {
   "coder/claudecode.nvim",
   dependencies = { "folke/snacks.nvim" },
@@ -23,7 +32,6 @@ return {
     "ClaudeCodeCloseAllDiffs",
   },
   keys = {
-    { "<leader>c", nil, desc = "AI/Claude Code" },
     { "<leader>cc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
     { "<leader>cf", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
     { "<leader>cr", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
