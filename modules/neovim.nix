@@ -17,8 +17,8 @@
     lua-language-server
     nil # nix language server
     nixpkgs-fmt # nix formatter
-    go # needed by mason to install gopls
-    jdk # needed to run jdtls
+    go
+    gopls # go language server
 
     # Needed for lazy.nvim
     nodejs

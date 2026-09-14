@@ -45,9 +45,6 @@ return {
 			vim.lsp.config('pylsp', {
 				capabilities = capabilities,
 			})
-			vim.lsp.config('jdtls', {
-				capabilities = capabilities,
-			})
 			vim.lsp.config('gopls', {
 				capabilities = capabilities,
 			})
@@ -62,6 +59,15 @@ return {
 			})
 			vim.lsp.config('marksman', {
 				capabilities = capabilities,
+			})
+			vim.lsp.config('nil_ls', {
+				capabilities = capabilities,
+			})
+
+			vim.lsp.enable({
+				'ts_ls', 'eslint', 'jsonls', 'html', 'cssls', 'lua_ls',
+				'pylsp', 'gopls', 'clangd', 'zls', 'rust_analyzer',
+				'marksman', 'nil_ls',
 			})
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP info hover" })
