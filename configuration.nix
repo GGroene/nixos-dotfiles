@@ -43,7 +43,7 @@
   users.users."gg" = {
     isNormalUser = true;
     description = "gg";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
     packages = with pkgs; [
       tree
     ];
