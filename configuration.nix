@@ -83,6 +83,7 @@
     maim
     mpv
     sxiv
+    xclip
   ];
 
   fonts.packages = with pkgs; [

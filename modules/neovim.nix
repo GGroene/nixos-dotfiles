@@ -29,12 +29,6 @@
     # Formatters used by none-ls
     stylua
     prettier
-
-    # nvim-silicon: renders code screenshots via the `silicon` CLI
-    silicon
-
-    # System clipboard integration ("+y/"*y) under X11/qtile
-    xclip
   ];
 
 }
