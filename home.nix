@@ -11,6 +11,7 @@ let
     rofi = "rofi";
     alacritty = "alacritty";
     picom = "picom";
+    dunst = "dunst";
   };
 in
 
@@ -69,6 +70,7 @@ in
     discord-ptb
     kdePackages.filelight
     lazydocker
+    dunst
   ];
 
 }
