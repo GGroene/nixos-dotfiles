@@ -63,7 +63,6 @@ in
     rofi-power-menu
     xwallpaper
     maim
-    i3lock
     starship
     tmux
     pcmanfm

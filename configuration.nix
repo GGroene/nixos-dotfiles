@@ -52,6 +52,8 @@
 
   programs.dconf.enable = true;
 
+  programs.i3lock.enable = true;
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (final: prev: {
