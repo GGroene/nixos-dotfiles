@@ -43,7 +43,7 @@
   users.users."gg" = {
     isNormalUser = true;
     description = "gg";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       tree
     ];
@@ -70,6 +70,11 @@
   programs.firefox.enable = true;
 
   programs.fish.enable = true;
+
+  virtualisation.docker.enable = true;
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim

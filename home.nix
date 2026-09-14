@@ -69,6 +69,7 @@ in
     pcmanfm
     discord-ptb
     kdePackages.filelight
+    lazydocker
   ];
 
 }

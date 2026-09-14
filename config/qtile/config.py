@@ -24,13 +24,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import subprocess
 import os
-from libqtile import bar, layout, qtile, widget
-from libqtile.config import Click, Drag, Group, Key, Match, hook, Screen
-from libqtile.lazy import lazy
-import colors
+import subprocess
 import time
+
+import colors
+from libqtile import bar, layout, qtile, widget
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, hook
+from libqtile.lazy import lazy
 
 mod = "mod4"  # aka Windows key
 mod1 = "mod1"  # alt key
@@ -56,7 +57,6 @@ def toggle_sticky_windows(qtile, window=None):
 def move_sticky_windows():
     for window in sticky_windows:
         window.togroup()
-    return
 
 
 @hook.subscribe.client_killed
@@ -162,8 +162,9 @@ keys = [
         "brightnessctl s 5%-"), desc='brightness Down'),
 
     # Misc keybinds
-    Key([], "Print", lazy.spawn("~/nixos-dotfiles/config/qtile/scripts/printclip.sh"), desc='Copy screenshot'),
     Key([], "Print", lazy.spawn(
+        os.path.expanduser("~/nixos-dotfiles/config/qtile/scripts/printclip.sh")), desc='Copy screenshot'),
+    Key([mod], "Print", lazy.spawn(
         f"maim -s /home/gg/Pictures/Screenshots/screenshot_{time.time()}.png"), desc='Save screenshot'),
     Key([mod], "s", toggle_sticky_windows(),
         desc="Toggle state of sticky for current window"),
@@ -215,14 +216,13 @@ for i in groups:
                 [mod],
                 i.name,
                 lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
+                desc=f"Switch to group {i.name}",
             ),
             Key(
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=False),
-                desc="Switch to & move focused window to group {}".format(
-                    i.name),
+                desc=f"Switch to & move focused window to group {i.name}",
             ),
         ]
     )
@@ -513,7 +513,7 @@ def autostart():
         if os.path.exists(home):
             break
         time.sleep(0.5)
-    subprocess.run(home)
+    subprocess.run(home, check=False)
 
 
 auto_fullscreen = True
