@@ -162,9 +162,8 @@ keys = [
         "brightnessctl s 5%-"), desc='brightness Down'),
 
     # Misc keybinds
+    Key([], "Print", lazy.spawn("~/nixos-dotfiles/config/qtile/scripts/printclip.sh"), desc='Copy screenshot'),
     Key([], "Print", lazy.spawn(
-        "printclip"), desc='Copy screenshot'),
-    Key([mod], "Print", lazy.spawn(
         f"maim -s /home/gg/Pictures/Screenshots/screenshot_{time.time()}.png"), desc='Save screenshot'),
     Key([mod], "s", toggle_sticky_windows(),
         desc="Toggle state of sticky for current window"),
@@ -172,7 +171,7 @@ keys = [
     Key([mod, "shift"], "f", lazy.spawn("firefox -fullscreen"), desc=""),
     Key([mod], "d", lazy.spawn("scrcpy -m 1024"), desc=""),
     Key([mod], "b", lazy.spawn("firefox"), desc=""),
-    Key([mod, "shift"], "d", lazy.spawn("discord"), desc=""),
+    Key([mod, "shift"], "d", lazy.spawn("discordptb"), desc=""),
 ]
 
 # Add help key
@@ -424,15 +423,8 @@ def init_widgets_screen1():
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    del widgets_screen2[10:12]
+    del widgets_screen2[5:6]
     return widgets_screen2
-
-
-def init_widgets_screen3():
-    widgets_screen3 = init_widgets_list()
-    del widgets_screen3[6:12]
-    del widgets_screen3[10:17]
-    return widgets_screen3
 
 
 def init_screens():

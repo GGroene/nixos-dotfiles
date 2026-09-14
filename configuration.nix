@@ -31,7 +31,7 @@
     autoRepeatInterval = 35;
     windowManager.qtile.enable = true;
     displayManager.sessionCommands = ''
-      xwallpaper --zoom ~/nixos-dotfiles/walls/wall1.png
+      xwallpaper --zoom ~/nixos-dotfiles/walls/wall1.jpg
     '';
   };
 
@@ -80,6 +80,9 @@
     networkmanagerapplet
     btop
     arandr
+    maim
+    mpv
+    sxiv
   ];
 
   fonts.packages = with pkgs; [

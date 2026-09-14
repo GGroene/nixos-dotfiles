@@ -67,6 +67,7 @@ in
     starship
     tmux
     pcmanfm
+    discord-ptb
     kdePackages.filelight
   ];
 
