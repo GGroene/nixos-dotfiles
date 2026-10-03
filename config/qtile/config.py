@@ -397,6 +397,31 @@ def init_widgets_list():
             **sep_defaults,
         ),
 
+        widget.Battery(
+            **deco,
+            format='{char} {percent:2.0%}',
+            charge_char='↑',
+            discharge_char='↓',
+            full_char='=',
+            low_percentage=0.15,
+            low_foreground=color[3],
+            update_interval=30,
+        ),
+
+        widget.Sep(
+            **sep_defaults,
+        ),
+
+        widget.PulseVolume(
+            **deco,
+            fmt='VOL:{}',
+            mouse_callbacks={'Button3': open_pavu},
+        ),
+
+        widget.Sep(
+            **sep_defaults,
+        ),
+
         widget.Clock(
             **deco,
             format='%a %d/%m/%y',  # Here you can change timezone

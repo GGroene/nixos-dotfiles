@@ -73,6 +73,8 @@ in
     kdePackages.filelight
     lazydocker
     dunst
+    sioyek
+    scrcpy
   ];
 
 }

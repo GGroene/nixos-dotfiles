@@ -91,6 +91,7 @@
     mpv
     sxiv
     xclip
+    pavucontrol
   ];
 
   fonts.packages = with pkgs; [
